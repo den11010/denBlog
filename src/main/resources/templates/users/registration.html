@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: site-head">
+
+    <title>register</title>
+</head>
+
+<body>
+<header th:replace="layout :: site-header"></header>
+<h1>Join us</h1>
+<form method="post" th:object="${registrationForm}">
+    <div>
+    <label for="username">Username:</label>
+</div>
+    <input id="username" type="text" name="username" th:value="*{username}"/>
+    <span class="formError" th:if="${#fields.hasErrors('username')}"
+          th:errors="*{username}">Invalid username</span>
+
+    <div>
+        <label for="fullName">Full name:</label>
+    </div>
+    <input id="fullName" type="text" name="fullName" th:value="*{fullName}"/>
+    <span class="formError" th:if="${#fields.hasErrors('username')}"
+          th:errors="*{fullName}">Invalid full name?!</span>
+
+    <div>
+        <label for="password" th:value="*{password}">Password:</label>
+    </div>
+    <input id="password" type="password" name="password" th:value="*{password}"/>
+    <span class="formError" th:if="${#fields.hasErrors('password')}"
+          th:errors="*{password}">Invalid password</span>
+
+    <div>
+        <label for="confirmPassword" th:value="*{confirmPassword}">Confirm password:</label>
+    </div>
+    <input id="confirmPassword" type="password" name="confirmPassword" th:value="*{confirmPassword}"/>
+    <span class="formError" th:if="${#fields.hasErrors('password')}"
+          th:errors="*{confirmPassword}">Invalid password</span>
+
+    <div>
+        <input type="submit" th:value="Register"/>
+    </div>
+</form>
+
+<footer th:replace="layout :: site-footer"></footer>
+</body>
+</html>
